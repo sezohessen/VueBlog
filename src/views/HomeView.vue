@@ -6,6 +6,7 @@
     <div v-for="name in matchingNames" :key="name">
       {{ name }}
     </div>
+    <button @click="handelClick">Stop Watch</button>
 
 
    <!-- -------------- -->
@@ -22,16 +23,23 @@
 </template>
 
 <script>
-import {ref,reactive, computed} from 'vue'
+import {ref,reactive, computed, watch} from 'vue'
 export default {
   name: 'HomeView',
   setup() {
     const search = ref('')
     const names = ref(['maro','sezo','ahmed','hussien','hassan'])
+    const StopWatch = watch(search,()=>{
+      console.log('waction function runing')
+    })
+    /* WatchEffect runs when the setup function created initially or using value inside it that could be changed */
     const matchingNames  = computed(()=> {
       return names.value.filter((name)=> name.includes(search.value))
     })
-    return { names,search ,matchingNames}
+    const handelClick = ()=>{
+      StopWatch()//Invoke
+    }
+    return { names,search,matchingNames,handelClick }
     /* ----------------- */
     const ninjaOne = ref({name:'Sezo',age:22})
     const ninjaTwo = reactive({name:'Hussien',age:28})
