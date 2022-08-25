@@ -17,12 +17,14 @@
 
 <script>
 import { ref } from "@vue/reactivity";
+import { useRouter } from 'vue-router';
 export default {
   setup() {
     const title = ref("");
     const body = ref("");
     const tag = ref("");
     const tags = ref([]);
+    const router = useRouter()
     const handelKeyDown = () => {
       if (!tags.value.includes(tag.value)) {
         tag.value = tag.value.replace("/s/", ""); //Remove white space
@@ -41,6 +43,7 @@ export default {
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify(post)
         })
+        router.push({name:'home'})
     }
     return { title, body, tag, handelKeyDown,tags ,handleSubmit};
   },
