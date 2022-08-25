@@ -43,7 +43,8 @@ export default {
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify(post)
         })
-        router.push({name:'home'})
+        router.push({name: 'home' })
+        /* router.push({path: '/' }) */
     }
     return { title, body, tag, handelKeyDown,tags ,handleSubmit};
   },
