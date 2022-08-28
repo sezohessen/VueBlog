@@ -9,6 +9,15 @@ const getPosts = ()=>{
             /* await new Promise(resolve => {
                 setTimeout(resolve,2000)
             }) */
+            /*    
+            Firebase
+            const res = await projectFirestore.collection('posts').get()
+            // console.log(res.docs)
+
+            posts.value = res.docs.map(doc => {
+                // console.log(doc.data())
+                return { ...doc.data(), id: doc.id }
+            }) */
             let data = await fetch('http://localhost:3000/posts')
             if(!data.ok){
                 throw Error('No data Available')
